@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorted Results</title>
+  <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        p.error-message {
+            color: #d9534f; /* Bootstrap's danger color */
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #5bc0de;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #46b8da;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Sorted Results</h2>
+
+<p>Sorted by: <span th:text="${attributeName}"></span></p>
+<p>Sort Order: <span th:text="${sortOrder}"></span></p>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Gender</th>
+    <th>GPA</th>
+    <th>Level</th>
+    <th>Address</th>
+    <!-- Add headers for other attributes as needed -->
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Iterate over sortedList and display student data -->
+  <tr th:each="student : ${sortedList}" th:class="${studentStat.odd} ? 'odd' : 'even'">
+    <td th:text="${student.id}"></td>
+    <td th:text="${student.firstName}"></td>
+    <td th:text="${student.lastName}"></td>
+    <td th:text="${student.gender}"></td>
+    <td th:text="${student.gpa}"></td>
+    <td th:text="${student.level}"></td>
+    <td th:text="${student.address}"></td>
+    <!-- Add cells for other attributes as needed -->
+  </tr>
+  </tbody>
+</table>
+
+<p th:if="${sortError}" class="error-message" th:text="${sortError}"></p>
+<br>
+
+<button onclick="location.href='/footer'">back To search</button>
+
+</body>
+</html>

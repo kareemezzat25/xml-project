@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Forms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h2>Student Forms</h2>
+<form action="/store-data" method="post" th:object="${ListStudent}">
+    <th:block th:each="i : ${#numbers.sequence(1, numForms)}">
+        <label th:text="'Student ' + ${i} + ' ID:'"></label>
+        <input type="text" th:name="'ItemList[' + ${i - 1} + '].id'" th:id="'ItemList[' + ${i - 1} + '].id'" required>
+
+        <label th:text="'Student ' + ${i} + ' firstname:'"></label>
+        <input type="text" th:name="'ItemList[' + ${i - 1} + '].firstName'" th:id="'ItemList[' + ${i - 1} + '].firstName'" pattern="[a-zA-Z ]+" required>
+        <br>
+
+        <label th:text="'Student ' + ${i} + ' lastname:'"></label>
+        <input type="text" th:name="'ItemList[' + ${i - 1} + '].lastName'" th:id="'ItemList[' + ${i - 1} + '].lastName'" pattern="[a-zA-Z ]+" required>
+
+        <label th:text="'Student ' + ${i} + ' gender:'"></label>
+        <input type="text" th:name="'ItemList[' + ${i - 1} + '].gender'" th:id="'ItemList[' + ${i - 1} + '].gender'" required>
+        <br>
+
+        <label th:text="'Student ' + ${i} + ' address:'"></label>
+        <input type="text" th:name="'ItemList[' + ${i - 1} + '].address'" th:id="'ItemList[' + ${i - 1} + '].address'" pattern="[a-zA-Z ]+" required>
+
+        <label th:text="'Student ' + ${i} + ' level:'"></label>
+        <input type="text" th:name="'ItemList[' + ${i - 1} + '].level'" th:id="'ItemList[' + ${i - 1} + '].level'" required>
+        <br>
+
+        <label th:text="'Student ' + ${i} + ' GPA:'"></label>
+        <input type="text" th:name="'ItemList[' + ${i - 1} + '].gpa'" th:id="'ItemList[' + ${i - 1} + '].gpa'" pattern="[0-3](\.[0-9]+)?|4(\.0+)?" required>
+
+        <br>
+    </th:block>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

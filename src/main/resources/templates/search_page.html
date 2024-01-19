@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Student</title>
+  <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 100px;
+            color: #5bc0de;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #5bc0de;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #46b8da;
+        }
+    </style>
+</head>
+
+<body>
+<h2>Search Student </h2>
+<form action="/search" method="Post">
+  <label for="studentId">Enter Student ID to Search:</label>
+  <input type="text" id="studentId" name="id">
+
+  <label for="studentName">Enter Student FirstName:</label>
+  <input type="text" id="studentName" name="firstName">
+
+  <label for="studentLastName">Enter Student LastName:</label>
+  <input type="text" id="studentLastName" name="lastName">
+
+  <label for="studentGender">Enter Student Gender:</label>
+  <input type="text" id="studentGender" name="gender">
+
+  <label for="address">Enter Student Address:</label>
+  <input type="text" id="address" name="address">
+
+  <label for="studentLevel">Enter Student Level:</label>
+  <input type="text" id="studentLevel" name="level">
+
+  <label for="studentGPA">Enter Student's GPA:</label>
+  <input type="text" id="studentGPA" name="gpa">
+  <button type="submit">Search</button>
+</form>
+</body>
+
+</html>

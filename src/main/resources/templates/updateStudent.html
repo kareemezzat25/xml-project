@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Student Details</title>
+  <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 100px;
+            color: #d9534f;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 300px;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        .error-message {
+            color: #d9534f;
+            margin-top: 5px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #5bc0de;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        button:hover {
+            background-color: #46b8da;
+        }
+    </style>
+</head>
+<body>
+<h2>Update Student Details</h2>
+<form th:action="@{/updateStudent/{id}(id=${student.id})}" th:object="${student}" method="post">
+
+  <!-- Other input fields... -->
+
+  <label for="firstName">First Name:</label>
+  <input type="text" id="firstName" th:field="*{firstName}" required pattern="[a-zA-Z]+" />
+  <span th:if="${#fields.hasErrors('firstName')}" class="error-message" th:errors="*{firstName}"></span>
+
+  <label for="lastName">Last Name:</label>
+  <input type="text" id="lastName" th:field="*{lastName}" required pattern="[a-zA-Z]+" />
+  <span th:if="${#fields.hasErrors('lastName')}" class="error-message" th:errors="*{lastName}"></span>
+
+  <label for="gender">Gender:</label>
+  <input type="text" id="gender" th:field="*{gender}" required />
+  <span th:if="${#fields.hasErrors('gender')}" class="error-message" th:errors="*{gender}"></span>
+
+  <label for="gpa">GPA:</label>
+  <input type="text" id="gpa" th:field="*{gpa}" required pattern="^[0-3](\.\d{1,2})?$|^4(\.0{1,2})?$" />
+  <span th:if="${#fields.hasErrors('gpa')}" class="error-message" th:errors="*{gpa}"></span>
+
+  <label for="level">Level:</label>
+  <input type="text" id="level" th:field="*{level}" required />
+  <span th:if="${#fields.hasErrors('level')}" class="error-message" th:errors="*{level}"></span>
+
+  <label for="address">Address:</label>
+  <input type="text" id="address" th:field="*{address}" required pattern="[a-zA-Z]+" />
+  <span th:if="${#fields.hasErrors('address')}" class="error-message" th:errors="*{address}"></span>
+
+  <br>
+  <button type="submit">Update</button>
+</form>
+<button onclick="location.href='/view-all'">Back to View All Students</button>
+</body>
+</html>

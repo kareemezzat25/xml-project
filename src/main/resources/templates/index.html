@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: #d9534f; /* Bootstrap's danger color */
+            background-color: #f2dede; /* Bootstrap's danger background color */
+            border: 1px solid #d9534f; /* Bootstrap's danger border color */
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<h2>Welcome to Student Management System</h2>
+<form action="/generate-forms" method="post">
+    <label for="numStudents">Enter the number of students:</label>
+    <input type="number" id="numStudents" name="numStudents" required>
+    <button type="submit">Generate Forms</button>
+</form>
+
+<!-- Display error message if it exists -->
+<div th:if="${error}" class="error-message">
+    <p th:text="${error}"></p>
+</div>
+
+</body>
+</html>

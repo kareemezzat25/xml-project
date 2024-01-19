@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Sorted Results</title>
+
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+
+        form {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        select, button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<form method="get" th:action="@{/sortFile}" id="sortForm">
+  <label for="attributeName">Choose Attribute Name To Sort:</label>
+  <select name="attributeName" id="attributeName">
+    <option value="id">ID</option>
+    <option value="firstname">First Name</option>
+    <option value="lastname">Last Name</option>
+    <option value="gpa">GPA</option>
+    <option value="level">Level</option>
+    <option value="address">Address</option>
+    <!-- Add options for other attributes as needed -->
+  </select>
+
+  <label for="sortOrder">Sort Order:</label>
+  <select name="sortOrder" id="sortOrder">
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+  </select>
+
+  <button type="submit">Sort</button>
+</form>
+
+<!-- Display sorted results here -->
+<!-- You can iterate over the sortedList in your model and display the data -->
+</body>
+</html>

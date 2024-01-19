@@ -1,0 +1,77 @@
+<!-- src/main/resources/templates/ViewStudents.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Students</title>
+
+    <!-- Add inline CSS styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<h1>All Students</h1>
+
+<div class="result">
+    <p>Number of Students Found: <span th:text="${numFound}"></span></p>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>GPA</th>
+        <th>Level</th>
+        <th>Address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Use Thymeleaf to iterate over the resultList and display each student -->
+    <tr th:each="student : ${resultList}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.gender}"></td>
+        <td th:text="${student.gpa}"></td>
+        <td th:text="${student.level}"></td>
+        <td th:text="${student.address}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
